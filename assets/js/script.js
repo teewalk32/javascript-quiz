@@ -43,72 +43,8 @@
 //     }
 // }
 
-
-var quiz = generateQuiz();
-var startButton = document.getElementById("start-quiz");
-var questions = 0;
-var score = 0;
-
-
-startButton.addEventListener("click", function () {
-    quiz = generateQuiz();
-    displayQuestion();
-});
-
-function displayQuestion() {
-    questionElement = document.getElementById("question");
-    choicesElement = document.getElementById("choices");
-    submitButton = document.getElementById("submit-answer");
-    feedbackElement = document.getElementById("feedback");
-}
-for (var i = 0; i < quiz[0].choices.length; i++) {
-    var choice = quiz[0].choices[i];
-    var button = document.createElement("button");
-    button.textContent = choice;
-    button.addEventListener("click", function (event) {
-        var selectedAnswer = event.target.textContent;
-        checkAnswer(selectedAnswer);
-
-    });
-    choicesElement.appendChild(button);
-
-    feedbackElement.textcontent = "";
-    submitButton.style.display = "block";
-}
-
-function checkAnswer(selectedAnswer) {
-    var feedbackElement = document.getElementById("feedback");
-    var submitButton = document.getElementById("submit-answer");
-
-    if (selectedAnswer === "booleans") {
-        feedbackElement.textContent = "Correct!";
-        score++;
-    } if (selectedAnswer === "parenthesis") {
-        feedbackElement.textContent = "Correct!";
-        score++;
-    } if (selectedAnswer === "all of the above") {
-        feedbackElement.textContent = "Correct!";
-        score++;
-    } if (selectedAnswer === "curly brackets") {
-        feedbackElement.textContent = "Correct!";
-        score++;
-    } if (selectedAnswer === "for loops") {
-        feedbackElement.textContent = "Correct!";
-        score++;
-    } else {
-        feedbackElement.textContent = "Incorrect. The correct answer was " + answer + ".";
-
-    }
-    if (questionIndex < quiz.length) {
-        displayQuestion();
-      } else {
-        displayScore();
-      }
-
-}
-
 function generateQuiz() {
-    var quizQuestions = [
+    var quiz = [
         {
             question: "Commonly used data types don not include:",
             choices: ["strings", "booleans", "alerts", "numbers"],
@@ -121,7 +57,7 @@ function generateQuiz() {
         },
         {
             question: "Arrays in javaScript can be used to store ___.",
-            choices: ["numbers and strings", "other arrays", "booleans", "all the above"],
+            choices: ["numbers and stricodengs", "other arrays", "booleans", "all the above"],
             answer: "all of the above"
         },
         {
@@ -134,14 +70,77 @@ function generateQuiz() {
             choices: ["JavaScript", "terminal/bash", "for loops", "console.log"],
             answer: "for loops"
         },
+        function checkAnswer(selectedAnswer) {
+            var feedbackElement = document.getElementById("feedback");
+            var submitButton = document.getElementById("submit-answer");
 
-        
-          function displayScore() {
-            var quizContainer = document.getElementById("quiz-container");
-            quizContainer.innerHTML = "Your score is " + score + " out of " + quiz.length + ".";
-          }
+            if (selectedAnswer === "booleans") {
+                feedbackElement.textContent = "Correct!";
+                score++;
+            } if (selectedAnswer === "parenthesis") {
+                feedbackElement.textContent = "Correct!";
+                score++;
+            } if (selectedAnswer === "all of the above") {
+                feedbackElement.textContent = "Correct!";
+                score++;
+            } if (selectedAnswer === "curly brackets") {
+                feedbackElement.textContent = "Correct!";
+                score++;
+            } if (selectedAnswer === "for loops") {
+                feedbackElement.textContent = "Correct!";
+                score++;
+            } else {
+                feedbackElement.textContent = "Incorrect. The correct answer was " + answer + ".";
+
+            }
+            if (questionIndex < quiz.length) {
+                displayQuestion();
+            } else {
+                displayScore();
+            }
+            quiz = generateQuiz();
+            var startButton = document.getElementById("start-quiz");
+            var quiz = 0;
+            var score = 0;
+
+
+            startButton.addEventListener("click", function () {
+                quiz = generateQuiz();
+                displayQuestion();
+            });
+
+            function displayQuestion() {
+                questionElement = document.getElementById("question");
+                choicesElement = document.getElementById("choices");
+                submitButton = document.getElementById("submit-answer");
+                feedbackElement = document.getElementById("feedback");
+            }
+            for (var i = 0; i < quiz[0].choices.length; i++) {
+                var choice = quiz[0].choices[i];
+                var button = document.createElement("button");
+                button.textContent = choice;
+                button.addEventListener("click", function (event) {
+                    var selectedAnswer = event.target.textContent;
+                    checkAnswer(selectedAnswer);
+
+                });
+                choicesElement.appendChild(button);
+
+                feedbackElement.textcontent = "";
+                submitButton.style.display = "block";
+            }
+
+
+
+        }
+
+
+
+
+           
 
     ];
     return quiz
 
 }
+ 
