@@ -43,9 +43,12 @@
 //     }
 // }
 
+
+// function to generate quiz
 function generateQuiz() {
     var quiz = [
         {
+            // Questions choices and answers for the quiz
             question: "Commonly used data types don not include:",
             choices: ["strings", "booleans", "alerts", "numbers"],
             answer: "booleans"
@@ -70,10 +73,12 @@ function generateQuiz() {
             choices: ["JavaScript", "terminal/bash", "for loops", "console.log"],
             answer: "for loops"
         },
+        // Function to check answers
         function checkAnswer(selectedAnswer) {
             var feedbackElement = document.getElementById("feedback");
             var submitButton = document.getElementById("submit-answer");
 
+            // If statement that strong equals the correct answer or answer incorrect
             if (selectedAnswer === "booleans") {
                 feedbackElement.textContent = "Correct!";
                 score++;
@@ -103,7 +108,7 @@ function generateQuiz() {
             var quiz = 0;
             var score = 0;
 
-
+            // click function to start quiz
             startButton.addEventListener("click", function () {
                 quiz = generateQuiz();
                 displayQuestion();
